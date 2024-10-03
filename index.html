@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Pesquisa para Prefeito</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>RESULTADO DE PESQUISA PARA PREFEITO ELEIÇÃO 2024</h1>
+        <a>São Sebastião de Lagoa de Roça PB</a>
+
+        <div class="result">
+            <img src="./basto.jfif" alt="Candidato 1" class="candidate-photo">
+            <div class="progress-info">
+                <h3>CANDIDATO 11</h3>
+                <div class="progress-bar">
+                    <div class="progress" data-percentage="60">60%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result">
+            <img src="./junior.jfif" alt="Candidato 2" class="candidate-photo">
+            <div class="progress-info">
+                <h3>CANDIDATO 45</h3>
+                <div class="progress-bar">
+                    <div class="progress" data-percentage="55">55%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result">
+            <img src="./votobranco.jfif" alt="Candidato 3" class="candidate-photo">
+            <div class="progress-info">
+                <h3>BRANCOS</h3>
+                <div class="progress-bar">
+                    <div class="progress" data-percentage="10">10%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result">
+            <img src="./votonulo (2).jfif" alt="Candidato 4" class="candidate-photo">
+            <div class="progress-info">
+                <h3>NULOS</h3>
+                <div class="progress-bar">
+                    <div class="progress" data-percentage="5">5%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para gerar um número aleatório dentro de um intervalo
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Função para animar a oscilação das porcentagens
+        function oscillateNumbers() {
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(function(bar) {
+                setInterval(function() {
+                    const basePercentage = parseInt(bar.getAttribute('data-percentage')); // Valor base
+                    const randomPercentage = getRandomInt(basePercentage - 10, basePercentage + 10); // Oscila dentro de +/- 10
+                    bar.style.width = randomPercentage + '%';
+                    bar.innerText = randomPercentage + '%';
+                }, 2000); // Intervalo de oscilação
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Configura a animação inicial
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(function(bar) {
+                const percentage = bar.getAttribute('data-percentage');
+                bar.style.transition = "width 2s ease";
+                bar.style.width = percentage + '%';
+                setTimeout(function() {
+                    oscillateNumbers(); // Inicia a oscilação após a animação inicial
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
